@@ -7,24 +7,36 @@
     <title>input表单元素</title>
   </head>
   <body>
-    <form>
+    <form action="xxx.php" method="get">
       <!-- name属性是表单元素的名字，同一类型的单选按钮必须有name属性并且值相同才能实现多选一  -->
       <!-- value属性是表单元素的值，name和value属性主要是用作给后台传递数据 -->
 
-      <!-- text属性 文本框，用户可以在里面输入任何文字 -->
+      <!-- text 文本框，用户可以在里面输入任何文字 -->
       用户名：<input type="text" name="username" value="请输入用户名"> <br>
 
-      <!-- password属性 密码框，用户看不见输入的内容
+      <!-- password 密码框，用户看不见输入的内容
        -->
        密码：<input type="password" name="password"> <br>
 
       <!-- checked属性，单选按钮和复选框可以设置，当页面打开时会默认选中添加了checked的按钮 -->
 
-      <!-- radio属性 单选按钮，用户只能选择一项 -->
+      <!-- radio 单选按钮，用户只能选择一项 -->
       性别：男<input type="radio" name="sex" value="男" checked="checked">   女<input type="radio" name="sex" value="女">    人妖<input type="radio" name="sex" value="人妖"> <br />
 
-      <!-- checkbox属性 复选框，可以实现多选 -->
-      爱好：吃饭<input type="checkbox" name="hobby" value="吃饭" checked="checked"> 睡觉<input type="checkbox" name="hobby" value="睡觉"> 打豆豆<input type="checkbox" name="hobby" value="打豆豆">
+      <!-- checkbox 复选框，可以实现多选 -->
+      爱好：吃饭<input type="checkbox" name="hobby" value="吃饭" checked="checked"> 睡觉<input type="checkbox" name="hobby" value="睡觉"> 打豆豆<input type="checkbox" name="hobby" value="打豆豆"> <br>
+
+      <!-- submit，表示一个提交按钮，点击后可以把表单域form里的表单元素的值提交到后台服务器，可以通过value属性修改按钮里的文字 -->
+      <input type="submit" value="免费注册"> <br>
+
+      <!-- reset，表示一个重置按钮，点击后可以还原表单元素初始的默认状态，可以通过value属性修改按钮里的文字 -->
+      <input type="reset" value="重新填写"> <br>
+
+      <!-- button，表示一个自定义按钮，点击后可以可以实现自定义的功能(后期结合js使用)，可以通过value属性修改按钮里的文字 -->
+      <input type="button" value="获取短信验证码"> <br>
+
+      <!-- file文件域，上传文件使用 -->
+      上传头像：<input type="file">
     </form>
   </body>
 </html>
