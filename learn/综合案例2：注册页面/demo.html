@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例：注册页面</title>
+  </head>
+  <body>
+    <form>
+      <h4>青春不常在，抓紧谈恋爱</h4>
+
+      <table width="500" height="200">
+        <tr>
+          <td>性别：</td>
+          <td>
+            <input type="radio" name="sex" value="nan" id="nan" /><img
+              src="images/man.jpg"
+              alt="男士"
+            /><label for="nan">男</label>
+            <input type="radio" name="sex" value="nv" id="nv" /><img
+              src="images/women.jpg"
+              alt="女士"
+            /><label for="nv">女</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>生日：</td>
+          <td>
+            <select name="birthday">
+              <option selected="selected">--请选择年份--</option>
+              <option value="2001">2001</option>
+              <option value="2002">2002</option>
+              <option value="2003">2003</option>
+            </select>
+            <select>
+              <option selected="selected">--请选择月份--</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <select>
+              <option selected="selected">--请选择日--</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>所在地区：</td>
+          <td>
+            <input type="text" name="area" value="北京思密达" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>婚姻状况：</td>
+          <td>
+            <input
+              type="radio"
+              name="hunyin"
+              value="weihun"
+              id="weihun"
+            /><label for="weihun">未婚</label>
+            <input type="radio" name="hunyin" value="liyi" id="liyi" /><label
+              for="liyi"
+              >离异</label
+            >
+            <input
+              type="radio"
+              name="hunyin"
+              value="sangou"
+              id="sangou"
+            /><label for="sangou">丧偶</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>学历：</td>
+          <td>
+            <select name="xueli">
+              <option selected="selected">--请选择学历--</option>
+              <option value="zhuanke">专科</option>
+              <option value="benke">本科</option>
+              <option value="shuoshi">硕士</option>
+              <option value="boshi">博士</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>喜欢的类型：</td>
+          <td>
+            <input
+              type="checkbox"
+              name="type-like"
+              value="妩媚的"
+              id="妩媚的"
+            /><label for="妩媚的">妩媚的</label>
+            <input
+              type="checkbox"
+              name="type-like"
+              value="可爱的"
+              id="可爱的"
+            /><label for="可爱的">可爱的</label>
+            <input
+              type="checkbox"
+              name="type-like"
+              value="小鲜肉"
+              id="小鲜肉"
+            /><label for="小鲜肉">小鲜肉</label>
+            <input
+              type="checkbox"
+              name="type-like"
+              value="老腊肉"
+              id="老腊肉"
+            /><label for="老腊肉">老腊肉</label>
+            <input
+              type="checkbox"
+              name="type-like"
+              value="都喜欢"
+              id="都喜欢"
+            /><label for="都喜欢">都喜欢</label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>个人介绍：</td>
+          <td>
+            <textarea name="describ-self">个人简介</textarea>
+          </td>
+        </tr>
+
+        <!-- 注册按钮 -->
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" value="免费注册" />
+          </td>
+        </tr>
+
+        <!-- 同意条款复选框 -->
+        <tr>
+          <td></td>
+          <td>
+            <input
+              type="checkbox"
+              name="tiaokuan"
+              value="agree"
+              id="tiaokuan"
+            /><label for="tiaokuan">我同意注册条款和会员加入标准</label>
+          </td>
+        </tr>
+
+        <!-- 跳转登录界面链接 -->
+        <tr>
+          <td></td>
+          <td>
+            <a href="#">我是会员，立即登录</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td>
+            <h5>我承诺</h5>
+            <ul>
+              <li>年满18岁</li>
+              <li>抱着严肃的态度</li>
+              <li>真诚寻找另一半</li>
+            </ul>
+          </td>
+        </tr>
+        
+      </table>
+    </form>
+  </body>
+</html>
