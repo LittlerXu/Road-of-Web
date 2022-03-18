@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS样式引用方式</title>
+    <!-- 1.外链式 -->
+    <link rel="stylesheet" href="../CSS/CSS样式引用方式.css" >
+    <!-- 2.内嵌式 -->
+    <style>
+        div {
+    font-size: 30px;
+    color: green;
+    }   
+    </style>
+    <!-- 3.导入式 -->
+    <style>
+        @import url("../CSS/CSS样式引用方式.css");
+    </style>
+</head>
+<body>
+    <!-- 4.行内式 -->
+    <div style="font-size: 30px; color: green;">
+        我是div标签里的文字
+    </div>
+</body>
+</html>
