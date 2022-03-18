@@ -6,23 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS样式引用方式</title>
     <!-- 1.外链式 -->
-    <link rel="stylesheet" href="../CSS/CSS样式引用方式.css" >
+    <link rel="stylesheet" href="../CSS/HTML引用CSS方式/外链式.css" >
     <!-- 2.内嵌式 -->
     <style>
-        div {
+        p.blue {
     font-size: 30px;
-    color: green;
+    color: blue;
     }   
     </style>
     <!-- 3.导入式 -->
     <style>
-        @import url("../CSS/CSS样式引用方式.css");
+        @import url("../CSS/HTML引用CSS方式/导入式.css");
     </style>
 </head>
 <body>
+    <h1>外链式</h1>
+    <p class="red">文字大小为40px，文字颜色为红色</p>
+
+    <h1>内嵌式</h1>
+    <p class="blue">文字大小为30px,文字颜色为蓝色</p>
+
+    <h1>导入式</h1>
+    <p class="pink">文字大小为20px,文字颜色为粉色</p>
+
     <!-- 4.行内式 -->
-    <div style="font-size: 30px; color: green;">
-        我是div标签里的文字
+    <h1>行内式</h1>
+    <div style="font-size: 10px; color: purple;">
+        文字大小为10px，文字颜色为紫色
     </div>
 </body>
 </html>
