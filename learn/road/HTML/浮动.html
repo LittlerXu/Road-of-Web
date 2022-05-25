@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>浮动</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .father1 > div {
+        height: 200px;
+        width: 200px;
+        background-color: rgb(79, 171, 216);
+        float: left;
+      }
+      .father2 > div {
+        height: 200px;
+        width: 200px;
+        background-color: rgb(178, 210, 109);
+        float: left;
+      }
+      .father1,.father2 {
+        width:1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father1">
+      <div class="son1" style="height: 200px">盒子1</div>
+      <div class="son2">盒子2</div>
+      <div class="son3">盒子3</div>
+    </div>
+    <div class="father2">
+      <div class="son4">盒子4</div>
+      <div class="son5">盒子5</div>
+      <div class="son6">盒子6</div>
+    </div>
+  </body>
+</html>
