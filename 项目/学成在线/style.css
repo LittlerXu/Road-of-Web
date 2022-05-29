@@ -1,0 +1,12 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style: none;
+}
+/* 定义版心为公共类 */
+.w {
+    width: 1200px;
+    margin: auto;
+}
