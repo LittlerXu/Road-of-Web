@@ -5,8 +5,55 @@
 li {
     list-style: none;
 }
+a {
+    text-decoration: none;
+}
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table; 
+  }
+  .clearfix:after {
+    clear:both;
+  }
+  .clearfix {
+     *zoom:1;
+  } 
+
 /* 定义版心为公共类 */
 .w {
     width: 1200px;
     margin: auto;
 }
+.header {
+    height: 42px;
+    background-color: pink;
+    margin: 30px auto;
+}
+.logo {
+    float: left;
+    width: 196px;
+    background-color: purple;
+}
+.logo>img {
+    vertical-align: bottom;
+}
+.nav {
+    float: left;
+    margin-left: 60px;
+}
+.nav>li {
+    float: left;
+    margin: 0 15px;
+}
+.nav>li>a {
+    display: block;
+    height: 42px;
+    padding: 0 10px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #050505;
+}
+.nav>li>a:hover {
+    border-bottom: 3px solid #00a4ff;
+    color: #00a4ff;
+} 
