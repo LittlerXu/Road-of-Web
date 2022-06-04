@@ -163,14 +163,215 @@ a {
  .course>.more {
      display: block;
      height: 38px;
-     margin: 5px 20px;
+     margin: 8px 20px;
      border: 1px solid #00a4ff;
      line-height: 38px;
      font-size: 16px;
      font-weight: 700;
      color: #00a4ff;
      text-align: center;
-
-
-
  } 
+
+ .goods {
+     height: 60px;
+     margin-top: 10px;
+     background-color: #fff;
+     box-shadow: 0 2px 3px 3px rgba(0,0,0,0.1);
+     line-height: 60px;
+ }
+ .goods>h3 {
+     float: left;
+     margin: 0 30px;
+     font-size: 16px;
+     color: #00a4ff;
+ }
+ .goods>ul {
+     float: left;
+ }
+ .goods>ul>li {
+     float: left;
+ }
+ .goods>ul>li>a {
+     /* display: block; */
+     padding: 0 30px;
+     border-left: 1px solid #ccc ;
+     font-size: 16px;
+     color: #050505;
+ }
+ .goods>.mod {
+     float: right;
+     margin-right: 30px;
+     font-size: 14px;
+     color:  #00a4ff;
+ }
+
+
+ .box>.box-hd {
+     margin: 30px 0 15px;
+     height: 20px;
+     line-height: 20px;
+ }
+ .box .box-hd h3 {
+     float: left;
+     font-size: 20px;
+     color: #494949;
+ }
+ .box .box-hd a {
+     float: right;
+     margin-right: 30px;
+     font-size: 12px;
+     color: #a5a5a5;
+ }
+ /* 把li的父元素ul修改得足够宽一行能装下5个盒子就不会换行了 */
+ .box ul.box-bd {
+    width: 1225px;
+ }
+ .box ul.box-bd li {
+     float: left;
+     width: 228px;
+     height: 270px;
+     background-color: #fff;
+     margin: 0 15px 15px 0;
+ }
+ .box ul.box-bd li img {
+     width: 100%;
+ }
+ ul.box-bd li h4 {
+     margin: 20px 20px;
+     margin-left: 25px;
+     font-size: 14px;
+     color: #050505;
+     font-weight: 400;
+ }
+ ul.box-bd li .info {
+     margin: 0 20px;
+     margin-left: 25px;
+     font-size: 12px;
+     color: #999;
+ }
+ ul.box-bd li .info span {
+     color: #ff7c2d;
+ }
+
+ .box2>.box2-hd {
+    margin: 25px 0 15px;
+    height: 20px;
+    line-height: 20px;
+ }
+ .box2>.box2-hd h3 {
+     float: left;
+     font-size: 20px;
+     color: #494949;
+ }
+ .box2>.box2-hd ul {
+     float: left;
+     margin-left: 320px;
+
+ }
+ .box2>.box2-hd ul li {
+     float: left;
+     padding: 0 35px;
+     font-size: 16px;
+    }
+.box2>.box2-hd ul li a {
+    color: #868686;
+}
+.box2>.box2-hd ul li a:hover {
+    color: #00a4ff;
+    }
+ .box2>.box2-hd>a {
+    float: right;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #a5a5a5;
+ }
+
+ .box2-bd>.php {
+    float: left;
+    width: 228px;
+    height: 392px;
+    background: url(./images/PHPrm.jpg);
+ }
+ .box2-bd>.core {
+     float: left;
+     margin-left: 15px;
+ }
+ .box2-bd>.core>.python {
+     width: 957px;
+     height: 100px;
+     background: url(./images/python.jpg);
+ }
+ .box2-bd>.core>ul {
+     margin-top: 22px;
+ }
+ .box2-bd>.core>ul>li {
+    float: left;
+    width: 228px;
+    height: 270px;
+    background-color: #fff;
+    margin-right: 15px;
+ }
+ .box2-bd>.core>ul>li:last-child {
+    margin-right: 0;
+ }
+ .box2-bd>.core>ul>li img {
+    width: 100%;
+}
+.box2-bd>.core>ul>li h4 {
+    margin: 20px 20px;
+    margin-left: 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+.box2-bd>.core>ul>li div {
+    margin: 0 20px;
+    margin-left: 25px;
+    font-size: 12px;
+    color: #999;
+}
+.box2-bd>.core>ul>li div span {
+    color: #ff7c2d; 
+}
+
+.footer {
+    height: 415px;
+    margin-top: 35px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.footer>.w {
+    margin-top: 35px;
+}
+.footer>.w>.copyright {
+    float: left;
+}
+.footer .w p {
+    margin: 20px 0;
+    font-size: 12px;
+    color: #666;
+}
+.footer .w button {
+    width: 118px;
+    height: 33px;
+    border:1px solid #00a4ff ;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #00a4ff;
+}
+.footer>.w>.links {
+    float: right;
+}
+.footer>.w>.links dl {
+    float: left;
+    margin-left: 100px;
+}
+.links dl>dt {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+.links dl>dd a {
+    color: #333;
+    font-size: 12px;
+}
