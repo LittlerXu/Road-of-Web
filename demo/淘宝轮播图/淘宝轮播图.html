@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+        }
+        .tb-promo {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+        }
+
+        /* 并集选择器可以集体声明相同的样式 */
+        .prev,
+        .next {
+            position: absolute;
+            /* 绝对定位的盒子垂直居中 */
+            top: 50%;
+            margin-top: -15px;
+            /* 加了绝对定位的盒子可以直接设置高度和宽度 */
+            width: 20px;
+            height: 30px;
+            background: rgba(0, 0, 0, .3);
+            line-height: 30px;
+            color: #fff;
+        }
+        .prev {
+            left: 0;
+            border-radius: 0 15px 15px 0;
+            text-indent: 1px;
+        }
+        .next {
+             /* 如果一个盒子既有left属性也有right属性，则默认会执行 left属性 同理  top  bottom  会执行 top */
+            right: 0;
+            border-radius: 15px 0 0 15px;
+            text-indent: 7px;
+        }
+        .promo-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -35px;
+            width: 70px;
+            height: 12px;
+            background-color: rgba(255,255,255,.3);
+            border-radius: 6.5px;
+        }
+        .promo-nav li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            margin: 2px 3px;
+            border-radius: 50%;
+            background-color: #fff;
+        } 
+        .promo-nav .selected {
+            background-color: #ff5000;
+        }
+    </style>
+    <title>淘宝轮播图</title>
+</head>
+<body>
+    <div class="tb-promo">
+        <!-- 轮播图片 -->
+        <img src="./tb.jpg" alt="">
+        <!-- 左侧按钮箭头 -->
+        <a href="" class="prev">&lt;</a>
+        <!-- 右侧按钮箭头 -->
+        <a href="" class="next">&gt;</a>
+        <ul class="promo-nav">
+            <li class="selected"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>

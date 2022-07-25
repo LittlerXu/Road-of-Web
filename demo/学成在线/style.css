@@ -227,13 +227,19 @@ a {
     width: 1225px;
  }
  .box ul.box-bd li {
+    position: relative;
      float: left;
      width: 228px;
      height: 270px;
      background-color: #fff;
      margin: 0 15px 15px 0;
  }
- .box ul.box-bd li img {
+ .box ul.box-bd li>em {
+    position: absolute;
+    top: 5px;
+    right: -3.5px;
+ }
+ .box ul.box-bd li>img {
      width: 100%;
  }
  ul.box-bd li h4 {
