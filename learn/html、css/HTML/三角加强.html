@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .price {
+            width: 160px;
+            height: 24px;
+            border: 1px solid red;
+            line-height: 24px;
+        }
+        .miaosha {
+            position: relative;
+            /* 浮动盒子不会压住文字，秒杀价会自动向右移动 */
+            float: left;
+            width: 90px;
+            background-color: red;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            /* 使秒杀价向右移动 */
+            margin-right: 12px;
+        }
+        .triangle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-width: 24px 10px 0 0;
+            border-style: solid;
+            border-color: transparent #fff;
+        }
+        .origin {
+            font-size: 14px;
+            color: gray;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="price">
+        <span class="miaosha">
+            &yen;1650
+            <i class="triangle"></i>
+        </span>
+        <span class="origin">
+            &yen;5650
+        </span>
+    </div>
+</body>
+</html>
