@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style-type: none;
+        }
+        #textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid pink;
+            outline: none;
+            resize: none;
+        }
+        ul {
+            margin-top: 50px;
+        }
+        
+        li {
+            width: 300px;
+            padding: 5px;
+            background-color: rgb(245, 209, 243);
+            color: red;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        .comment-list a {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="comment">
+        <div class="area">
+            <textarea name="" id="textarea" placeholder="善语结善缘,恶语种恶果"></textarea>
+            <button>发布</button>
+        </div>
+        <ul class="comment-list">
+
+        </ul>
+    </div>
+    <script>
+        let button = document.querySelector('button')
+        button.onclick = function() {
+            let li = document.createElement('li')
+            if(button.previousElementSibling.value == '') {
+                alert("您没有输入内容")
+                return false
+            } else {
+            li.innerHTML = button.previousElementSibling.value + '<a href="javascript:;">删除</a>' //href="javascript:;"的作用: 取消链接的跳转
+            button.parentElement.nextElementSibling.insertBefore(li,button.parentElement.nextElementSibling.firstElementChild)
+            button.previousElementSibling.value = ''
+            
+            //删除评论
+            let aList = document.querySelectorAll('.comment-list a')
+                for(let i=0; i<aList.length; i++) {
+                    aList[i].onclick = function() {
+                        this.parentElement.parentElement.removeChild(this.parentElement) //删除<a>的父元素<li>
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

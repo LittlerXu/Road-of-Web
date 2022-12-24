@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <input type="text" value="默认文字" style="color: #999;" />
+    <script>
+      var input = document.querySelector("input");
+      var flag = 0; //与flag相关操作都是为了解决用户输入内容为"默认文字"引发的问题
+      input.onfocus = function () {
+        this.style.color = "#333";
+        if (flag === 0) { //flag=0代表输入框为未输入状态,flag=1代表输入框已有用户输入的内容
+          this.value = "";
+        }
+      };
+      input.onblur = function () {
+        this.style.color = "#999";
+        if(this.value =="") {
+            this.value = "默认文字"
+            flag = 0
+        }else {
+            flag = 1
+        }
+      };
+    </script>
+  </body>
+</html>

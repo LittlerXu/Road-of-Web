@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="begin">开启计时器</button>
+    <button class="end">关闭计时器</button>
+    <script>
+      let begin = document.querySelector(".begin");
+      let end = document.querySelector(".end");
+      let timer = null; //要将计时器的标识设为全局变量,因为设在函数里的话,后续访问不到,无法取消计时器
+      begin.addEventListener("click", function () {
+        timer = setInterval(function () {
+          console.log("hello world");
+        }, 1000);
+        });
+      end.addEventListener("click", function () {
+        clearInterval(timer);
+      });
+    </script>
+  </body>
+</html>

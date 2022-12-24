@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //利用new Object()创建对象
+    var mingren = new Object()
+    mingren.name = "xuanwomingren"
+    mingren.sex = "man"
+    mingren.age = 19
+    mingren.skill = "yingfenshenshu"
+
+    console.log(mingren)
+
+    //利用自定义构造函数创建对象
+    function Hero(name,type,blood,attack) {
+        this.name = name
+        this.type = type
+        this.blood = blood
+        this.attack = attack
+    }
+    var houyi = new Hero("后羿","力量型",500,"近战")
+    var lianpo = new Hero("廉颇","射手型",100,"远程")
+    console.log(houyi,lianpo)
+    </script>
+</body>
+</html>

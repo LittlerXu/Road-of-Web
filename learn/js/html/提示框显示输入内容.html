@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        position: relative;
+        margin: 100px 100px;
+      }
+      .tooltip {
+        display: none;
+        position: absolute;
+        top: -40px;
+        width: 171px;
+        height: 30px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        font-size: 18px;
+        line-height: 30px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      .tooltip::before {
+        content: "";
+        position: absolute;
+        left: 18px;
+        top: 30px;
+        width: 0;
+        border: 7px solid transparent;
+        border-top-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="tooltip"></div>
+      <input type="text" />
+    </div>
+    <script>
+      let toolTip = document.querySelector(".tooltip");
+      let input = document.querySelector("input");
+      //事件类型不能是'keydown',因为字符录入在keyup事件后,所以按下就执行监听函数的话会使提示框中的字符少于输入框中一个
+      //也不能是'keypress',因为keypress事件不会响应功能键,删除键'Backspace'键是功能键,所以删除输入框中的内容时提示框中的内容不会删除
+      input.addEventListener("keyup", function (event) {
+        if (input.value != "") {
+          toolTip.style.display = "block";
+          toolTip.innerHTML = input.value;
+        } else {
+          toolTip.style.display = "none";
+        }
+      });
+
+      //失去焦点时隐藏提示框,获得焦点且输入框内容不为空时显示提示框
+      //不写也可以,默认效果与写了一样
+      input.addEventListener("focus", function () {
+        if (input.value !== "") {
+          toolTip.style.display = "block";
+        }
+      });
+      input.addEventListener("blur", function () {
+        toolTip.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
