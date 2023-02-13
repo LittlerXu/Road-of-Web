@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <h2>人员列表</h2>
+      <input type="text" placeholder="请输入名字" v-model="keyWord" />
+      <ul>
+        <li v-for="(p,index) in filPersons" :key="p.id">
+          {{p.name}}-{{p.age}}-{{p.sex}}
+        </li>
+      </ul>
+    </div>
+
+    <!-- watch实现
+    <script>
+      new Vue({
+        el: "#root",
+        data: {
+          keyWord: "",
+          persons: [
+            { id: "001", name: "马冬梅", age: 19, sex: "女" },
+            { id: "002", name: "周冬雨", age: 20, sex: "女" },
+            { id: "003", name: "周杰伦", age: 21, sex: "男" },
+            { id: "004", name: "温兆伦", age: 22, sex: "男" },
+          ],
+          filPersons: [],
+        },
+        watch: {
+          keyWord: {
+            immediate: true, //初始化时调用一次,val为空字符串,每个字符串都包含空字符串且在第0位
+            handler(val) {
+              this.filPersons = this.persons.filter((item) => {
+                return item.name.indexOf(val) !== -1;
+              });
+            },
+          },
+        },
+      });
+    </script> -->
+
+    
+    <!-- computed实现 -->
+    <script>
+      new Vue({
+        el: "#root",
+        data: {
+          keyWord: "",
+          persons: [
+            { id: "001", name: "马冬梅", age: 19, sex: "女" },
+            { id: "002", name: "周冬雨", age: 20, sex: "女" },
+            { id: "003", name: "周杰伦", age: 21, sex: "男" },
+            { id: "004", name: "温兆伦", age: 22, sex: "男" },
+          ],
+        },
+        computed: {
+          filPersons() {
+            return this.persons.filter((item) => {
+              return item.name.indexOf(this.keyWord) !== -1;
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -5,32 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      div {
-        border: 1px solid black;
-      }
-      .one {
-        position: relative;
-        width: 200px;
-        height: 200px;
-      }
-      .two {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform:translate(-50%,-50%);
-        height: 50px;
-        width: 50px;
-        transition: 2s;
-      }
-      .two:hover {
-        transform: translate(50%,50%);
-      }
-    </style>
   </head>
   <body>
-    <div class="one">
-      <div class="two"></div>
-  </div>
+    <script>
+      let obj = { x: 100 };
+      let obj2 = { y: 200 };
+
+      //用obj2中的x(本质上是getter,描述符为存取描述符)属性代理obj中的x属性(描述符为数据描述符)
+      Object.defineProperty(obj2, "x", {
+        get() {
+          console.log("getter被调用")
+          console.log(this)
+        },
+        set(value) {
+          obj.x = value;
+        },
+      });
+    </script>
   </body>
 </html>
