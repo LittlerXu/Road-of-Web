@@ -1,0 +1,59 @@
+.focus {
+    position: relative;
+    overflow: hidden;
+    width: 721px;
+    height: 455px;
+    margin: 0 auto;
+}
+.focus>ul {
+    /* 使用缓动动画的元素必须设置定位 */
+    position: absolute;
+    left: 0;
+    width: 500%;
+}
+
+.focus>ul>li {
+    float: left;
+}
+
+.arrow-l,
+.arrow-r {
+    /* 当鼠标放在轮播图上时显示左右按钮 */
+    display: none;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.3);
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 22px;
+}
+
+.arrow-r {
+    right: 0;
+}
+
+.circle {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+.circle li {
+    float: left;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.5);
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+/* 当前显示的轮播图对应的小圆点变为白色 */
+.current {
+    background-color: #fff;
+}
