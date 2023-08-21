@@ -366,9 +366,11 @@ axios#getUri([config])
 
 ## 默认配置
 
-您可以指定默认配置，它将作用于每个请求。
+Axios.defaults对象用于修改Axios实例的默认配置.
 
-### 全局 axios 默认值
+defaults的属性与创建新的Axios实例时的config对象的属性相同.
+
+### 修改axios默认配置
 
 ```js
 axios.defaults.baseURL = 'https://api.example.com';
@@ -376,7 +378,7 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 ```
 
-### 自定义实例默认值
+### 修改自定义实例默认配置
 
 ```js
 // 创建实例时配置默认值

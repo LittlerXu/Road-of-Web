@@ -516,7 +516,7 @@ Object.defineProperty(obj2, 'x', {
 
 2.事件的回调需要配置在methods对象中，最终会成为vm的方法, 但并不是数据代理；
 
-3.**`@click="监听函数" `和 `@click="@click="监听函数()"`的区别:**
+3.**`@click="监听函数" `和 `@click="监听函数()"`的区别:**
 
 `@click="监听函数" `会在调用监听函数的时候自动将事件对象event作为参数传入监听函数中,但此时不能传入其它参数,而`@click="@click="监听函数()"`,在调用监听函数时,不会自动将事件对象传入,如需用到事件对象,则必须手动传入,此时还可以传入其它参数:`@click="监听函数(其它参数,$event)"`, $event是vue将DOM中事件对象重新封装过的一个代表事件对象的关键词。
 
@@ -3532,7 +3532,7 @@ props:{
 > - props也可以传递函数,与data中的属性同理
 > - 父组件传给子组件的props中的属性,子组件也可以传给其子组件
 >
-> - props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告(修改props传入的对象里的属性值不会警告,因为此时此对象的值并未改变,但最好不要修改此对象的属性)，这也是props中属性与data中属性最大的区别,  若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。[详情](https://www.bilibili.com/video/BV1Zy4y1K7SH?t=1361.1&p=66)
+> - props是单向数据流(只能从父组件流入子组件),是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告(修改props传入的对象里的属性值不会警告,因为此时此对象的值并未改变,但最好不要修改此对象的属性)，这也是props中属性与data中属性最大的区别,  若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。[详情](https://www.bilibili.com/video/BV1Zy4y1K7SH?t=1361.1&p=66)
 
 #### 自定义事件
 
@@ -3574,7 +3574,7 @@ props:{
    >
    >>**提示**
    >>
-   >>- 自定义事件名和监听函数名可以相同
+   >>- 自定义事件名和监听函数名以及触发自定义事件所在的函数名都可以相同
    >>- vue设定子组件的自定义事件监听函数的this指向子组件实例对象,但又设定在methods中书写的函数的this指向其所在的vc,所以当子组件的自定义事件监听函数写在父组件的methods中时会发生冲突,vue设定此时监听函数的this指向其所在的父组件,当子组件的自定义事件监听函数在方法二中作为匿名函数时,如果不是箭头函数则this指向子组件,是箭头函数的话则this指向父组件.
    >>- 监听函数的参数为子组件中触发自定义事件时传给父组件的参数,当传入参数为多个时,可以选择性使用扩展运算符`...params`将传入的多个参数合并进数组中:[详解](https://www.bilibili.com/video/BV1Zy4y1K7SH?t=1340.0&p=80)
    >>- 限制自定义事件只能触发一次:
@@ -4234,8 +4234,7 @@ slot 通俗的理解就是“占坑”，在子组件模板中占好了位置(�
 
 一个组件里可以有多个插槽,但需要将sort标签和其对应的内容对应起来,做法如下:
 
-
-`<slot></slot>`标签有一个`name`属性用来标识不同的插槽,成为插槽的名称
+`<slot></slot>`标签有一个`name`属性用来标识不同的插槽,称为插槽的名称
 
 ```vue
 //Son.vue
@@ -4255,13 +4254,13 @@ slot 通俗的理解就是“占坑”，在子组件模板中占好了位置(�
 </div>
 ```
 
-如果一个`<slot>`不带`name`属性的话，那么它的`name`属性默认值为`"default"`,这样的插槽也被成为默认插槽
+如果一个`<slot>`不带`name`属性的话，那么它的`name`属性默认值为`"default"`,这样的插槽也被成为默认插槽或匿名插槽,==一个组件中只能有一个默认插槽==
 
 
 
 然后就是向每个插槽中传入内容:
 
-在父组件的子组件标签中,将要 传递给各个插槽的数据内容用一个标签包裹起来,并且给这些标签添加一个属性:`v-slot:<对应的slot标签的name属性值>`,因为`<template>`标签不会添加进DOM的特性,通常使用`<template>`标签来包裹内容.
+在父组件的子组件标签中,将要 传递给各个插槽的数据内容分别用`<template></template>`标签包裹起来,并且给这些标签添加一个属性:`v-slot:<对应的slot标签的name属性值>`.==v-slot属性只能用于template标签或者组件标签==
 
 这样,就能将要传入子组件的内容传递给其对应的插槽
 
@@ -4302,7 +4301,7 @@ slot 通俗的理解就是“占坑”，在子组件模板中占好了位置(�
 有时候往子组件中插入的内容需要以子组件中的数据为依据,所以需要将子组件的数据传给父组件以供插槽使用,这时候有便捷的方法来达成:
 
 
-将子组件要传递的数据作为`<slot></slot>`标签的属性值,`<slot></slot>`标签的所有属性及其属性值会被作为对象的属性整合为一个对象传给父组件中对应的`<template>`元素中,这个对象也被成为"插槽Prop"
+将子组件要传递的数据作为`<slot></slot>`标签的属性值,`<slot></slot>`标签的所有属性(除name外)及其属性值会被整合为一个对象传给父组件中对应的`<template>`元素中,这个对象也被成为"插槽Prop"
 
 ```vue
 //Son.vue
@@ -4311,17 +4310,11 @@ slot 通俗的理解就是“占坑”，在子组件模板中占好了位置(�
     <slot name='slot1' myName='Jack'></slot>
     <slot name='slot2' :age='age'></slot>
 </div>
-
-data() {
-    return {
-      age: 18,
-    }
-  },
 ```
 
 然后在父组件中接收传过来的值:
 
-template标签的`v-slot:<插槽名称>`属性值会作为子组件传过来的对象的变量名
+template标签的`v-slot:<插槽名称>`属性的值会作为子组件传过来的对象的变量名, 以供在子组件标签的内容中使用
 
 ```vue
 //Father.vue
@@ -4330,7 +4323,7 @@ template标签的`v-slot:<插槽名称>`属性值会作为子组件传过来的�
   <template v-slot:slot1='obj1'>
     	{{obj1.myName}}
     </template>
-    <template v-slot:slot1='obj2'>
+    <template v-slot:slot2='obj2'>
     	{{obj2.age}}
     </template>
 </Son>
@@ -4344,40 +4337,40 @@ template标签的`v-slot:<插槽名称>`属性值会作为子组件传过来的�
 
 可以给`<slot></slot>`标签里添加内容作为默认内容,当别的组件没有给你内容的时候，那么默认的内容就会被渲染
 
-##### 独占默认插槽的缩写语法
+##### 独占默认插槽
 
-当子组件标签的内容都属于默认插槽时(即子组件中所有标签都不含`v-slot`属性),子组件标签可以被当作插槽的模板来使用, 这样就可以把 `v-slot` 直接用在组件上,并且可以省略`v-slot:`后的`default`
+当子组件标签的内容中没有以v-slot为属性的template标签时, 可以把 `v-slot`, 此时子组件标签里的所有内容都会成为子组件的默认插槽的内容,称为独占默认插槽,如果要使用v-slot的话可以直接用将其放在在子组件标签上,并且可以省略`v-slot:`后的`default`, 
 
 ```xml
+//Father.vue
 <div>
-  <!-- 可以把 :default 去掉，仅限于默认插槽 -->
-  <test v-slot="slotProps">
+  <!-- 可以把 :default 去掉，仅限于将slot属性直接用于子组件标签时 -->
+  <Son v-slot="slotProps">
     {{slotProps.usertext.firstName}}
-  </test>
+  </Son>
 </div>
-复制代码
 ```
 
-==注意： 默认插槽 的缩写语法不能和 具名插槽 混用，因为它会导致作用域不明确==
+独占默认插槽不能和 具名插槽 混用，因为它会导致作用域不明确
 
 ```xml
+//Father.vue
 <div>
-  <!-- 可以把 :default 去掉，仅限于默认插槽 -->
-  <test v-slot="slotProps">
+  <Son v-slot="slotProps">
     {{slotProps.usertext.firstName}}
     <!-- 无效，会警告 -->
     <template v-slot:other="otherSlotProps">
       slotProps is NOT available here
     </template>
-  </test>
+  </Son>
 </div>
-复制代码
 ```
 
 只要出现**多个插槽**，始终要为所有的插槽使用完整的基于`<template>`的语法：
 
 ```xml
-<test>
+//Father.vue
+<Son>
   <template v-slot:default="slotProps">
     {{ slotProps.user.firstName }}
   </template>
@@ -4385,7 +4378,7 @@ template标签的`v-slot:<插槽名称>`属性值会作为子组件传过来的�
   <template v-slot:other="otherSlotProps">
     ...
   </template>
-</test>
+</Son>
 ```
 
 
@@ -4408,13 +4401,66 @@ template标签的`v-slot:<插槽名称>`属性值会作为子组件传过来的�
 >
 >```xml
 ><div>
->  <test v-slot={usertext}>
+>  <test v-slot='{usertext}'>
 >    {{usertext.firstName}}
 >  </test>
 ></div>
 >```
 
 
+
+##### 插槽的旧语法
+
+vue2.6之前版本，插槽的语法使用的是**slot 和slot-scope** , 有些第三方库使用的就是这种语法.
+
+**默认插槽**
+
+```html
+// 子组件
+<div class="child1">
+     <!--默认插槽-->
+      <slot>默认插槽按钮</slot>
+</div>
+
+// 父组件
+<child1>
+	<div>插入子组件的内容</div>
+</child1>
+```
+
+**具名插槽**
+
+```html
+// 子组件
+<div class="child2">
+     <slot name="header"></slot>
+     <slot name="body"></slot>
+     <slot name="footer"></slot>
+</div>
+
+// 父组件
+<child2>
+	 <div slot="header">父组件传递过来的头部内容</div>
+     <div slot="body">父组件传递过来的身体内容</div>
+     <div slot="footer">父组件传递过来的页脚内容</div>
+</child2>
+```
+
+**作用域插槽**
+
+[作用域](https://so.csdn.net/so/search?q=作用域&spm=1001.2101.3001.7020)插槽：能让父组件插槽内容能够访问子组件中才有的数据，绑定在 元素上的 attribute 被称为插槽 prop
+
+```html
+// 子组件
+<div class="child3">
+      <slot name="top" :data="item"></slot>
+</div>
+
+// 父组件 slotprop 为子组件传递过来的参数
+<child3>
+      <div slot="top" slot-scope="slotprop">{{slotprop.data}}</div>
+ </child3>
+```
 
 #### 具名插槽的缩写
 
@@ -4460,16 +4506,16 @@ template标签的`v-slot:<插槽名称>`属性值会作为子组件传过来的�
 
 下面的书写形式是错误的：
 
-```bash
+```html
 <test #="{ usertext }">
   {{ usertext.firstName }}
 </test>
 复制代码
 ```
 
-如果希望使用缩写的话，**必须始终以明确插槽名取而代之**：
+如果默认插槽希望使用此缩写方法的话，**必须使用明确的默认插槽名称default**：
 
-```bash
+```html
 <test #default="{ usertext }">
   {{ usertext.firstName }}
 </test>
@@ -4612,7 +4658,7 @@ new Vue({
 >    }
 >}
 >const mutations = {
->	PLUS(context,value){
+>	PLUS(state,value){
 >		state.sum += value
 >	},
 >}
@@ -5388,6 +5434,10 @@ params参数:属于路径当中的一部分，在配置路由的时候，需要�
 
 1. 传递参数
 
+   >to的字符串写法和对象写法的区别:
+   >
+   >字符串写法传递的参数最终都会被转化为字符串, 对象写法不会被转化, 所以要传递引用类型的数据时要采用对象写法
+
    ```vue
    <!-- 跳转并携带query参数，to的字符串写法 -->
    <router-link :to="/home/message/detail?id=666&title=你好">跳转</router-link>
@@ -6084,94 +6134,97 @@ PC端常用UI组件库
 
 
 
-#### element-ui使用
+#### vue可视化界面
 
-**element-ui完整引入**
+vue提供了可视化界面以方便管理项目和依赖, 只需在项目文件夹中,然后在命令行工具中: `vue ui`,然后会生成可视化见面的网址, 点击就可打开
 
-安装 element-ui：`npm i element-ui -S`
+![image-20230729103231381](VUE.assets/image-20230729103231381.png)
 
-在`main.js`中:
+可视化界面主要的功能是管理项目依赖和插件以及管理脚手架配置
 
-```js
-import Vue from 'vue'
-import App from './App.vue'
+<img src="VUE.assets/image-20230729104318704.png" alt="image-20230729104318704" style="zoom:50%;" />
 
-//完整引入
+#### element-ui
 
-//引入ElementUI完整组件库
-import ElementUI from 'element-ui';
-//引入ElementUI全部样式
-import 'element-ui/lib/theme-chalk/index.css';
-//应用element插件
-Vue.use(ElementUI);
+##### 安装
 
-Vue.config.productionTip = false
-new Vue({
-	el:'#app',
-	render: h => h(App),
-})
-```
+element-ui的安装和使用
 
-**element-ui**按需引入
+element-ui有两种安装方式: 
 
-借助 [babel-plugin-component](https://github.com/QingWei-Li/babel-plugin-component)，可以只引入需要的组件，以达到减小项目体积的目的。
+一种是以依赖包的方式安装, 直接`npm i element-ui`即可, 另一种是以插件的形式安装, 便捷的安装方式是利用vue ui进行可视化安装
 
-安装babel-plugin-component:`npm install babe1-plugin-component -D`-D代表开发依赖
+更推荐使用插件的形式进行安装, 因为以依赖包的形式进行安装后, element-ui的引入和应用都需要在main.js中, 会使main.js文件更加臃肿,而以可视化方式进行插件安装后, 引入和应用在plugin文件夹中的element.js中会自动地配置好, 优雅又简单.
 
-在`main.js`中:
-
-```js
-import Vue from 'vue'
-import App from './App.vue'
-
-//按需引入
-
-//按需引入ElementUI组件
-import { Button,Row,DatePicker } from 'element-ui';
-//挨个应用引入的ElementUI组件
-Vue.component('atguigu-button', Button);
-Vue.component('atguigu-row', Row);
-Vue.component('atguigu-date-picker', DatePicker);
+>但要注意: 在安安装时这个选项不要勾选, 这个选项的意思是"是否要使用scss来改写element-ui的样式", 如果勾选的话会自动在开发依赖中引入"node-sass"和"sass-loader"这两个依赖, 而"node-sass"依赖应该替换为"sass"依赖, 并且"sass-loader"是必须在生产依赖中引入的, 在开发依赖中引入会在运行项目时报错, 所以如果需要使用scss来改写element-ui的样式, 可以自行在开发依赖中引入"sass"依赖和在生产依赖中引入"sass-loader"依赖.
+>
+><img src="VUE.assets/image-20230729105730979.png" alt="image-20230729105730979" style="zoom:33%;" />
 
 
-Vue.config.productionTip = false
-new Vue({
-	el:'#app',
-	render: h => h(App),
-})
-```
 
-在`babel.config.js`配置文件中:
+官网的使用文档中的"按需引入"的这一步骤:
 
-```js
-module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset',
-		["@babel/preset-env", { "modules": false }],
-  ],
-	plugins:[
-    [
-      "component",
-      {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
-      }
-    ]
-  ]
-}
-```
+![image-20230729111605316](VUE.assets/image-20230729111605316.png)
 
+新版本的脚手架中.babelrc文件改为了babel.config.js, 并且只需要将框起来的内容添加进文件中即可, 而不需要改动文件中文本的原本的"presets"配置项.
 
+利用vue ui安装并设置按需引入后会自动配置此文件
+
+##### 使用
+
+按照官网的文档使用即可, 但有时会碰到意外的bug.
+
+###### select下拉框位置偏移
+
+<img src="VUE.assets/image-20230729162657561.png" alt="image-20230729162657561" style="zoom:50%;" />
+
+像这样, select的下拉框和输入框之间间隔有距离,打开浏览器的开发者工具可以看到:
+
+![image-20230729162856121](VUE.assets/image-20230729162856121.png)
+
+![image-20230729162946759](VUE.assets/image-20230729162946759.png)
+
+由于el-main元素标签的自带样式:`line-height: 160px`被select元素继承了,从而污染了select的样式, 导致下拉框被挤下去了, 给el-select元素添加样式:`style="line-height:40px"`后, 下拉框恢复正常.
 
 ### vue相关
 
+#### vue中插件和依赖的区别
+
+插件一般都是开发依赖, 而插件对应的依赖一般都是生产依赖
+
+依赖就是一个功能包，里边封装了一些开发好的功能，在需要用到地方引入这个包就可以使用。
+
+插件也是封装了一系列功能的组件包，但它是“插入”另一个软件并添加功能,等于是直接在软件上添加了某些功能.
+
+插件往往都有其对应的依赖,插件功能的实现最终是调用插件对应的依赖包,换句话说就是：插件就是帮助软件更好，更方便的使用依赖的。
+
+比如**vue-cli-plugin-element**这个插件就依赖于**vue-cli**。 它的作用是使这个软件在调用依赖包中的功能时更加的方便。
+
+安装依赖的指令:`npm install <依赖包>`, 安装插件的指令: `vue add @scope/vue-cli-plugin-<插件名> `
+
+以`axios`为例:
+
+axios 插件 Vue 实例上安装了另一个原型(prototype)属性(`this.$axios`.. 或任何名称)，因此它确实为 Vue 添加了一个功能。
+
+也可以单独使用axios，在需要的文件中导入 `从“axios”导入 axios`。不会向 Vue 本身添加任何功能——只是在应用程序中使用另一个软件。这里的axios是一个依赖。
+
+
+
 #### 有些vue周边库在vue2中要使用低版本
+
+使用vue用户界面安装插件和依赖会自动根据项目使用的vue版本来安装适用的插件和依赖的版本
 
 swiper@5.4.5
 
 vuex@3.6.2
 
 vue-lazyload@1.3.3
+
+
+
+#### npm run dev 和 npm run serve区别
+
+[(59条消息) npm run dev 和 npm run serve区别_npm run serve和dev_时光成梦的博客-CSDN博客](https://blog.csdn.net/song_6666/article/details/124162715)
 
 ### 项目相关
 
